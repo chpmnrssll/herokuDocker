@@ -1,0 +1,27 @@
+{
+  "name": "herokuDocker",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "<chpmnrssll@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./server.js",
+    "debug": "DEBUG=demo:* node ./server.js",
+    "nodemon": "DEBUG=demo:* nodemon ./server.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "supertest": "^4.0.2"
+  }
+}
