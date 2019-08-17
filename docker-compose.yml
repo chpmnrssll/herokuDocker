@@ -1,19 +1,21 @@
-version: '2'
+version: '3'
 
 services:
-  web:
-    build: .
-    volumes:
-      - ./:/src
-      - /src/node_modules
-    ports:
-      - '7777:7777'
+  app:
+    build: ./app
     depends_on:
-      - mongo
+      - db
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app:/app
+    working_dir: /app
 
-  mongo:
+  db:
     image: mongo
     ports:
-      - '27017:27017'
+      - 27017:27017
     volumes:
-      - /data/db
+      - ./db:/db
