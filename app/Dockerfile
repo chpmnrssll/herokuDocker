@@ -4,7 +4,7 @@ COPY ./entrypoint.sh /entrypoint/
 
 RUN ["chmod", "+x", "entrypoint/entrypoint.sh"]
 
-WORKDIR /app/
+WORKDIR /app
 
 EXPOSE 8080
 
