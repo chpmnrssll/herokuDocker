@@ -12,6 +12,8 @@ const APP_PORT = process.env.APP_PORT || 8080;
 const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = '/posts';
 
+console.log(process.env);
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('combined')); // 'dev'
@@ -31,7 +33,7 @@ db.on('error', (error) => {
     }, 20 * 1000);
   } else {
     // Some other error occurred.  Log it.
-    throw new Error(new Date(), String(error));
+    throw new Error(error);
   }
 });
 
