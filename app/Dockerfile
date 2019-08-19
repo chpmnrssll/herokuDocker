@@ -8,6 +8,6 @@ RUN ["chmod", "+x", "entrypoint.sh"]
 
 EXPOSE 8080
 
-ENTRYPOINT ["/entrypoint/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 
 CMD ["yarn", "dev"]
