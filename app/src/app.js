@@ -9,15 +9,19 @@ const app = express();
 const Post = require('./models/posts');
 
 const APP_PORT = process.env.PORT || process.env.APP_PORT || 8080;
-const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = '/posts';
-
+const DB_PORT = process.env.DB_PORT || 27017;
 const DB_URL = `${process.env.MONGODB_URI}` || `mongodb://db:${DB_PORT}${DB_NAME}`;
-console.log(process.env);
+
 console.log(`DB_URL: ${DB_URL}`);
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('combined')); // 'dev'
+
+app.listen(APP_PORT, () => {
+  console.log(`Server listening on port ${APP_PORT}`);
+});
 
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -40,12 +44,7 @@ db.on('error', (error) => {
 });
 
 db.once('open', () => {
-  const server = app.listen(APP_PORT, () => {
-    app.set('server', server);
-    app.set('db', db);
-    // Users = Users(db);
-    console.log(`Server listening on port ${APP_PORT}`);
-  });
+  app.set('db', db);
 });
 
 
