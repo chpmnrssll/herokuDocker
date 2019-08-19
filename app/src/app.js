@@ -12,7 +12,7 @@ const APP_PORT = process.env.APP_PORT || 8080;
 const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = '/posts';
 
-console.log(process.env);
+const DB_URL = process.env.MONGODB_URI || `mongodb://db:${DB_PORT}${DB_NAME}`;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -27,7 +27,7 @@ db.on('error', (error) => {
   // See: https://github.com/Automattic/mongoose/issues/5169
   if (error.message && error.message.match(/failed to connect to server .* on first connect/)) {
     setTimeout(() => {
-      mongoose.connect(`mongodb://db:${DB_PORT}${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true }).catch(() => {
+      mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).catch(() => {
         // empty catch avoids unhandled rejections
       });
     }, 20 * 1000);
