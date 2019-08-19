@@ -13,6 +13,7 @@ const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = '/posts';
 
 const DB_URL = process.env.MONGODB_URI || `mongodb://db:${DB_PORT}${DB_NAME}`;
+console.log(process.env);
 console.log(`DB_URL: ${DB_URL}`);
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,7 +34,8 @@ db.on('error', (error) => {
     }, 20 * 1000);
   } else {
     // Some other error occurred.  Log it.
-    throw new Error(error);
+    // throw new Error(error);
+    console.error(error);
   }
 });
 
