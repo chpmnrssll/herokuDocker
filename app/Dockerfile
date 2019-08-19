@@ -6,7 +6,7 @@ EXPOSE 8080
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app/
-RUN ["chmod", "+x", "entrypoint.sh"]
-ENTRYPOINT ["entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 CMD ["yarn", "dev"]
