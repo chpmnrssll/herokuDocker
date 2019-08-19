@@ -1,10 +1,10 @@
 FROM node:latest
 
-COPY ./entrypoint.sh /entrypoint/
-
-RUN ["chmod", "+x", "entrypoint/entrypoint.sh"]
-
 WORKDIR /app
+
+# COPY ./entrypoint.sh /entrypoint/
+
+RUN ["chmod", "+x", "entrypoint.sh"]
 
 EXPOSE 8080
 
