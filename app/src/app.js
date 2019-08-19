@@ -13,12 +13,12 @@ const DB_PORT = process.env.DB_PORT || 27017;
 const DB_NAME = '/posts';
 
 const DB_URL = process.env.MONGODB_URI || `mongodb://db:${DB_PORT}${DB_NAME}`;
-
+console.log(`DB_URL: ${DB_URL}`);
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('combined')); // 'dev'
 
-mongoose.connect(`mongodb://db:${DB_PORT}${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.on('error', (error) => {
