@@ -1,15 +1,15 @@
 const { GraphQLObjectType } = require('graphql');
 
-const addPost = require('./mutations/addPost');
+const createPost = require('./mutations/createPost');
 const updatePost = require('./mutations/updatePost');
-const removePost = require('./mutations/removePost');
+const deletePost = require('./mutations/deletePost');
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addPost,
+    createPost,
     updatePost,
-    removePost,
+    deletePost,
   },
 });
 
