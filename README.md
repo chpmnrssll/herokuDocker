@@ -1,6 +1,8 @@
 # Node.js & MongoDB Docker Compose
 
-This is a simple Node.js + MongoDB Docker Compose config for use on Heroku.
+This is a simple Node.js & MongoDB Docker Compose config for use on Heroku.
+
+Example app comes with Koa, GraphQL, Mongoose, and ESLint setup.
 
 ## Usage
 
