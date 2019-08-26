@@ -14,6 +14,12 @@ const DB_PORT = process.env.DB_PORT || 27017;
 const DB_URL = process.env.MONGODB_URI || `mongodb://db:${DB_PORT}${DB_NAME}`;
 const APP_PORT = process.env.PORT || process.env.APP_PORT || 8080;
 
+app.use(logger());
+app.use(router.routes());
+app.use(router.allowedMethods());
+app.on('error', (error) => { throw new Error(error); });
+app.listen(APP_PORT);
+
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
   app.context.db = mongoose.connection;
@@ -33,13 +39,3 @@ router.get('/', (ctx, next) => {
 
   next();
 });
-
-app.use(logger());
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-app.on('error', (error) => {
-  throw new Error(error);
-});
-
-app.listen(APP_PORT);
